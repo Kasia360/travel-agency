@@ -13,7 +13,7 @@ const OrderOptionNumber = ({ currentValue, limits, setOptionValue, price }) => (
       value={currentValue}
       min={limits.min}
       max={limits.max}
-      onChange={event => setOptionValue(event.currentTarget.value)}
+      onChange={event => setOptionValue(parseInt(event.currentTarget.value))}
     >
     </input>
     ({formatPrice(price)})
@@ -21,7 +21,7 @@ const OrderOptionNumber = ({ currentValue, limits, setOptionValue, price }) => (
 );
 
 OrderOptionNumber.propTypes = {
-  currentValue: PropTypes.string,
+  currentValue: PropTypes.number,
   limits: PropTypes.object,
   setOptionValue: PropTypes.func,
   price: PropTypes.string,
