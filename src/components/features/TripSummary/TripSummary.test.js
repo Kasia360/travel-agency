@@ -51,18 +51,18 @@ describe('Component TripSummary', () => {
   });
 
   it('renders tags properly', () => {
-      const tagVariants = ['a', 'b', 'c'];
-      const component = shallow(<TripSummary id={'id'} image={'image.jpg'} name={'name'} cost={'cost'} days={5} tags={tagVariants} />);
+    const tagVariants = ['a', 'b', 'c'];
+    const component = shallow(<TripSummary id={'id'} image={'image.jpg'} name={'name'} cost={'cost'} days={5} tags={tagVariants} />);
 
-      for (let i = 0; i < tagVariants.length; i++) {
-        expect(component.find('.tag').at(i).text()).toEqual(tagVariants[i]);
-      }
-    });
+    for (let i = 0; i < tagVariants.length; i++) {
+      expect(component.find('.tag').at(i).text()).toEqual(tagVariants[i]);
+    }
+  });
 
-    it('does not render tags if there is no tag', () => {
-      const component = shallow(<TripSummary id={'id'} image={'image.jpg'} name={'name'} cost={'cost'} days={5} />);
-expect(component.find('.tags')).toEqual({});
-      console.log(component.debug());
-    });
+  it('does not render tags if there is no tag', () => {
+    const component = shallow(<TripSummary id={'id'} image={'image.jpg'} name={'name'} cost={'cost'} days={5} />);
+    expect(component.find('.tags')).toEqual({});
+    console.log(component.debug());
+  });
 
 });

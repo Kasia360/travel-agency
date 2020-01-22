@@ -18,7 +18,7 @@ describe('Component OrderOption', () => {
     const component = shallow(<OrderOption type={'date'} name={expectedName} />);
 
     expect(component.find('.title').text()).toEqual(expectedName);
-//    console.log(component.debug());
+    //    console.log(component.debug());
   });
 
 });
