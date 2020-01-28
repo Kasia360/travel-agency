@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './HappyHourAd.scss';
+import { formatTime } from '../../../utils/formatTime';
 
 //import { Row, Col } from 'react-flexbox-grid';
 
@@ -17,7 +18,11 @@ class HappyHourAd extends React.Component {
 
   constructor() {
     super();
-    setInterval(() => this.forceUpdate(), 1000);
+    if (!this.isCancelled) { setInterval(() => this.forceUpdate(), 1000); }
+  }
+
+  componentWillUnmount() {
+    this.isCancelled = true;
   }
 
   getCountdownTime() {
@@ -37,7 +42,7 @@ class HappyHourAd extends React.Component {
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.countdown}>{countdown > 82800 ? promoDescription : countdown}</div>
+        <div className={styles.countdown}>{countdown > 82800 ? promoDescription : formatTime(countdown)}</div>
       </div>
     );
   }
