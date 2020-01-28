@@ -7,19 +7,19 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 
 const OrderOptionDate = ({ setOptionValue }) => {
-const [startDate, setStartDate] = useState(new Date());
-return (
-< DatePicker
-className={styles.dateinput}
-selected={startDate}
-onChange={date => { setStartDate(date); setOptionValue(date); }}
-minDate={new Date()}
-/>);
+  const [startDate, setStartDate] = useState(new Date());
+  return (
+    < DatePicker
+      className={styles.dateinput}
+      selected={startDate}
+      onChange={date => { setStartDate(date); setOptionValue(date); }}
+      minDate={new Date()}
+    />);
 };
 
 
 OrderOptionDate.propTypes = {
-setOptionValue: PropTypes.func,
+  setOptionValue: PropTypes.func,
 };
 
 export default OrderOptionDate;

@@ -183,20 +183,20 @@ for (let type in optionTypes) {
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
         break;
-     }
+      }
 
-     case 'date': {
-       /*test for date picker */
-       it('contains Datepicker', () => {
-         expect(renderedSubcomponent.find(DatePicker).length).toBe(1);
-         });
+      case 'date': {
+        /*test for date picker */
+        it('contains Datepicker', () => {
+          expect(renderedSubcomponent.find(DatePicker).length).toBe(1);
+        });
 
-         it('should run SetOrderOption function on change', () => {
-           renderedSubcomponent.find(DatePicker).simulate('change', testValue);
-           expect(mockSetOrderOption).toBeCalledTimes(1);
-           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
-       });
-       break;
+        it('should run SetOrderOption function on change', () => {
+          renderedSubcomponent.find(DatePicker).simulate('change', testValue);
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+        });
+        break;
       }
     }
   });
