@@ -14,26 +14,26 @@ import { calculateTotal } from '../../../utils/calculateTotal';
 
 import settings from '../../../data/settings';
 const sendOrder = (trip, options, tripCost) => {
-const totalCost = formatPrice(calculateTotal(tripCost, options));
-const payload = {
-  ...trip,
-  ...options,
-  totalCost,
-};
+  const totalCost = formatPrice(calculateTotal(tripCost, options));
+  const payload = {
+    ...trip,
+    ...options,
+    totalCost,
+  };
 
-const url = `${settings.db.url}/${settings.db.endpoint.orders}`;
+  const url = `${settings.db.url}/${settings.db.endpoint.orders}`;
 
-const fetchOptions = {
-  cache: 'no-cache',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(payload),
-};
+  const fetchOptions = {
+    cache: 'no-cache',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  };
 
-fetch(url, fetchOptions)
-.then(function (response) {
+  fetch(url, fetchOptions)
+    .then(function (response) {
       return response.json();
     }).then(function (parsedResponse) {
       console.log('parsedResponse', parsedResponse);
@@ -50,19 +50,19 @@ const isValid = (trip, options, tripCost) => {
 const OrderForm = ({ trip, tripCost, options, setOrderOption }) => {
   console.log(options);
   return (
-  <Row>
-    {pricing.map(option => (
-      <Col key={option.id} md={5}>
-        <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} />
-      </Col>
-    ))}
-    <Col xs={12}>
-      <OrderSummary tripCost={tripCost} options={options} ></OrderSummary>
-      <Button onClick={() => isValid(trip, options, tripCost)}>Order now!</Button>
+    <Row>
+      {pricing.map(option => (
+        <Col key={option.id} md={5}>
+          <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} />
+        </Col>
+      ))}
+      <Col xs={12}>
+        <OrderSummary tripCost={tripCost} options={options} ></OrderSummary>
+        <Button onClick={() => isValid(trip, options, tripCost)}>Order now!</Button>
 
       </Col>
-      </Row>);
-    };
+    </Row>);
+};
 
 OrderForm.propTypes = {
   tripCost: PropTypes.string,
